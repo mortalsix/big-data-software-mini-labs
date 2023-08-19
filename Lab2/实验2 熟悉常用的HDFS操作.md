@@ -5,8 +5,8 @@
 
 # 实验平台
 - 操作系统：Ubuntu 22.04
-- JDK版本：JDK 1.8.0_162
-- Hadoop版本：3.3.5
+- JDK 版本：JDK 1.8.0_162
+- Hadoop 版本：3.3.5
 - Java IDE：Visual Studio Code
 
 # 实验内容和要求

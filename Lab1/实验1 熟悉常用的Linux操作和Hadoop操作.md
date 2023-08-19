@@ -8,8 +8,8 @@
 - 操作系统：Windows 10
 - 虚拟机软件：VirtualBox 7.0
 - 终端软件：MobaXterm 23.2
-- JDK版本：JDK 1.8.0_162
-- Hadoop版本：3.3.5
+- JDK 版本：JDK 1.8.0_162
+- Hadoop 版本：3.3.5
 
 # 实验内容和要求
 ### 一、安装Linux虚拟机

@@ -1,24 +1,32 @@
 # 实验目的
-- 理解 HBase 在 Hadoop 体系结构中的角色。
-- 熟练使用 HBase 操作常用的 Shell 命令。
-- 熟悉 HBase 操作常用的 Java API。
+- 理解 4 种数据库（ MySQL、HBase、Redis 和 MongoDB ）的概念以及不同点。
+- 熟练使用 4 种数据库操作常用的 Shell 命令。
+- 熟悉 4 种数据库操作常用的 Java API。
 
 # 实验平台
 - 操作系统：Ubuntu 22.04
 - JDK 版本：JDK 1.8.0_162
 - Hadoop 版本：3.3.5
-- HBase 版本：2.5.4
+- MySQL 版本：5.6
+- Redis 版本：7.2
+- MongoDB 版本：7.0
 - Java IDE：Visual Studio Code
 
 # 实验内容和要求
-### 一、编程实现以下指定功能，并用 Hadoop 提供的 HBase Shell 命令完成相同的任务。
-1. 列出 HBase 所有表的相关信息，如表名、创建时间等。
-1. 在终端输出指定表的所有记录数据。
-1. 向已经创建好的表添加和删除指定的列族或列。
-1. 清空指定表的所有记录数据。
-1. 统计表的行数。
+### 一、MySQL 数据库操作
 
-### 二、现有以下关系数据库中的表（见表1、表2和表3），完成指定任务。
+#### 表 1 学生（Student）表 
+
+|Name|English|Math|Computer|
+| ---- | ---- | ---- | ---- |
+| zhangsan | 69 | 86 | 77 |
+| lisi | 55 | 100 | 88 |
+
+1. 根据表 1 ，在 MySQL 中创建 Student 表，并录入数据。
+1. 用 SQL 语句输出 Student 表中的所有记录。
+1. 查询 zhangsan 的 Computer 成绩。
+1. 修改 lisi 的 Math 成绩为 95。
+### 二、HBase 数据库操作
 
 #### 表 1 学生（Student）表 
 
@@ -28,26 +36,6 @@
 | 2015002 | Mary | female | 22 |
 | 2015003 | Lisi | male | 24 |
 
-
-#### 表 2 课程（Course）表 
-
-|课程号（C_No）|课程名（C_Name）|学号（C_Credit）|
-| ---- | ---- | ---- |
-| 123001 | Math | 2.0 |
-| 123002 | Computer Science | 5.0 |
-| 123003 | English | 3.0 |
-
-
-#### 表 3 选课（SC）表 
-
-|学号（SC_No）|课程号（SC_No）|成绩（SC_Score）|
-| ---- | ---- | ---- |
-| 2015001 | 123001 | 86 |
-| 2015001 | 123003 | 69 |
-| 2015002 | 123002 | 77 |
-| 2015002 | 123003 | 99 |
-| 2015003 | 123001 | 98 |
-| 2015003 | 123002 | 95 |
 
 1. 将表1、表2和表3中的数据转换为适合 HBase 存储的表，并使用 HBase Shell 命令插入数据。
 
@@ -70,3 +58,7 @@
 1. 编程实现功能 `deleteRow(String tableName, String row)` 
 
     功能描述：删除表 `tableName` 中 `row` 指定的行的记录。
+
+### 三、Redis 数据库操作
+
+### 四、MongoDB 数据库操作
