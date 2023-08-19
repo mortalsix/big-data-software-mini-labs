@@ -1,27 +1,33 @@
 # 一、实验目的
-1. 掌握 Linux 虚拟机的安装方法。
-2. 掌握一些常用的 Linux 命令。
-3. 掌握 Hadoop 的伪分布式安装方法。
-4. 掌握 Hadoop 的常用操作。
+1. 理解 HBase 在 Hadoop 体系结构中的角色。
+2. 熟练使用 HBase 操作常用的 Shell 命令。
+4. 熟悉 HBase 操作常用的 Java API。
 
 # 二、实验平台
-- 操作系统：Windows 10
-- 虚拟机软件：VirtualBox 7.0
-- 终端软件：MobaXterm 23.2
+- 操作系统：Ubuntu 22.04
 - JDK版本：JDK 1.8.0_162
 - Hadoop版本：3.3.5
+- HBase版本：2.5.4
+- Java IDE：Visual Studio Code
 
 # 三、实验内容和要求
-### 1. 安装Linux虚拟机
-- 安装并启动 VirtualBox 软件
-- 准备好 Ubuntu 镜像文件
-- 在 VirtualBox 中安装 Ubuntu 系统
-- 更新 apt 
-- 安装 openssh-server
-- 设置虚拟机网络端口转发
-- 使用 MobaXterm 连接虚拟机
+### 1. 编程实现以下指定功能，并用 Hadoop 提供的 HBase Shell 命令完成相同的任务。
+- 列出 HBase 所有表的相关信息，如表名、创建时间等。
+- 在终端输出指定表的所有记录数据。
+- 向已经创建好的表添加和删除指定的列族或列。
+- 清空指定表的所有记录数据。
+- 统计表的行数。
 
-### 2. 熟悉常用的Linux命令
+### 2. 现有以下关系数据库中的表（见表1、表2和表3），要求将其转换为适合 HBase 存储的表并插入数据。同时，编程完成以下指定功能。
+
+表1  <center> 学生（Student）表 </center>
+|   学号（S_No）   |   姓名（S_Name）  |  性别（S_Sex）  |
+| ---- | ---- | ---- |
+|      |      |      |
+|      |      |      |
+|      |      |      |
+
+
 - `cd` 切换目录
 - `ls` 查看文件与目录
 - `mkdir` 新建目录
