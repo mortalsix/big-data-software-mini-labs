@@ -1,61 +1,72 @@
-# 一、实验目的
-1. 理解 HBase 在 Hadoop 体系结构中的角色。
-2. 熟练使用 HBase 操作常用的 Shell 命令。
-4. 熟悉 HBase 操作常用的 Java API。
+# 实验目的
+- 理解 HBase 在 Hadoop 体系结构中的角色。
+- 熟练使用 HBase 操作常用的 Shell 命令。
+- 熟悉 HBase 操作常用的 Java API。
 
-# 二、实验平台
+# 实验平台
 - 操作系统：Ubuntu 22.04
 - JDK版本：JDK 1.8.0_162
 - Hadoop版本：3.3.5
 - HBase版本：2.5.4
 - Java IDE：Visual Studio Code
 
-# 三、实验内容和要求
-### 1. 编程实现以下指定功能，并用 Hadoop 提供的 HBase Shell 命令完成相同的任务。
-- 列出 HBase 所有表的相关信息，如表名、创建时间等。
-- 在终端输出指定表的所有记录数据。
-- 向已经创建好的表添加和删除指定的列族或列。
-- 清空指定表的所有记录数据。
-- 统计表的行数。
+# 实验内容和要求
+### 一、编程实现以下指定功能，并用 Hadoop 提供的 HBase Shell 命令完成相同的任务。
+1. 列出 HBase 所有表的相关信息，如表名、创建时间等。
+1. 在终端输出指定表的所有记录数据。
+1. 向已经创建好的表添加和删除指定的列族或列。
+1. 清空指定表的所有记录数据。
+1. 统计表的行数。
 
-### 2. 现有以下关系数据库中的表（见表1、表2和表3），要求将其转换为适合 HBase 存储的表并插入数据。同时，编程完成以下指定功能。
+### 二、现有以下关系数据库中的表（见表1、表2和表3），完成指定任务。
 
-表1  <center> 学生（Student）表 </center>
-|   学号（S_No）   |   姓名（S_Name）  |  性别（S_Sex）  |
+#### 表 1 学生（Student）表 
+
+|学号（S_No）|姓名（S_Name）|性别（S_Sex）|年龄（S_Age）|
+| ---- | ---- | ---- | ---- |
+| 2015001 | Zhangsan | male | 23 |
+| 2015002 | Mary | female | 22 |
+| 2015003 | Lisi | male | 24 |
+
+
+#### 表 2 课程（Course）表 
+
+|课程号（C_No）|课程名（C_Name）|学号（C_Credit）|
 | ---- | ---- | ---- |
-|      |      |      |
-|      |      |      |
-|      |      |      |
+| 123001 | Math | 2.0 |
+| 123002 | Computer Science | 5.0 |
+| 123003 | English | 3.0 |
 
 
-- `cd` 切换目录
-- `ls` 查看文件与目录
-- `mkdir` 新建目录
-- `rmdir` 删除空的目录
-- `cp` 复制文件或目录
-- `mv` 移动文件与目录，或重命名
-- `rm` 移除文件或目录
-- `cat` 查看文件内容
-- `tac` 反向查看文件内容
-- `more` 一页一页翻动查看文件内容
-- `head` 查看文件内容的前若干行
-- `tail` 查看文件内容的后若干行
-- `touch` 修改文件时间或创建新文件
-- `chown` 修改文件所有者
-- `find` 文件查找
-- `tar` 压缩命令
-- `grep` 查找字符串
+#### 表 3 选课（SC）表 
 
-### 3. 进行Hadoop伪分布式安装
-- 使用 MobaXterm 传送 jdk 压缩包 和 Hadoop 压缩包
-- 解压 JDK 压缩包
-- 配置 Java 环境变量
-- 解压 Hadoop 压缩包
-- 重命名 Hadoop 文件夹，更改 Hadoop 文件夹所有者
-- 修改 Hadoop 配置文件 core-site.xml 和 hdfs-site.xml
+|学号（SC_No）|课程号（SC_No）|成绩（SC_Score）|
+| ---- | ---- | ---- |
+| 2015001 | 123001 | 86 |
+| 2015001 | 123003 | 69 |
+| 2015002 | 123002 | 77 |
+| 2015002 | 123003 | 99 |
+| 2015003 | 123001 | 98 |
+| 2015003 | 123002 | 95 |
 
-### 4. 熟悉常用的Hadoop操作
-- 在 HDFS 中创建用户目录 `/user/<username>`，其中 `<username>` 用实际的用户名替换
-- 在上一步创建的用户目录中创建 `test` 文件夹
-- 将 Linux 操作系统本地的 `~/.bashrc` 文件上传到上一步创建的 `test` 文件夹中，并查看 `test` 目录
-- 将上一步 HDFS 中 `test` 目录中的 `.bashrc` 文件复制到 Linux 操作系统本地文件系统的 `/usr/local/hadoop` 目录下
+1. 将表1、表2和表3中的数据转换为适合 HBase 存储的表，并使用 HBase Shell 命令插入数据。
+
+1. 编程实现功能 `createTable(String tableName, String[] fields)` 
+
+    功能描述：创建表，参数 `tableName` 为表的名称，字符串数组 `fields` 为存储记录各个域名称的数组。要求当 HBase 已经存在名为 `tableName` 的表的时候，先删除原有的表，再创建新的表。
+
+1. 编程实现功能 `addRecord(String tableName, String row, String[] fields, String[] values)` 
+    
+    功能描述：向表 `tableName`、行 `row`（用 `S_Name` 表示）和字符串数组fields指定的单元格中添加对应的数据 `values`。其中，如果fields中每个元素对应的列族下还有相应的列限定符， 用 `columnFamily:column` 表示。 例如同时向 `Math`、 `Computer Science`、 `English` 3列添加成绩时， 字符串数组 `fields` 为 `{"Score:Math", "Score:Computer Science", "Score:English"}`， 数组 `values` 存储这3门课的成绩。
+
+1. 编程实现功能 `scanColumn(String tableName, String column)`  
+    
+    功能描述：浏览表 `tableName` 某一列的数据， 如果某一行记录中该列数据不存在， 则返回 `null` 。 要求当参数  `column` 为某一列族名称时， 如果底下有若干个列限定符， 则列出每个列限定符代表的列的数据； 当参数 `column` 为某一列具体名称（ 如 `Score:Math` ） 时， 只需要列出该列的数据。
+
+1. 编程实现功能 `modifyData(String tableName, String row, String column)` 
+    
+    功能描述：修改表 `tableName`、 行 `row` （可以用学生姓名 `S_Name` 表示） 、 列 `column` 指定的单元格的数据。
+
+1. 编程实现功能 `deleteRow(String tableName, String row)` 
+
+    功能描述：删除表 `tableName` 中 `row` 指定的行的记录。
