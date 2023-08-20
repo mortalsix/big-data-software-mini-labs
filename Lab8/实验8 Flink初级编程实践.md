@@ -7,10 +7,10 @@
 - Flink 版本：1.16.2
 
 # 实验内容和要求
-### 一、Flink 上的 WordCount 程序
+### 1. Flink 上的 WordCount 程序
 
 使用 IDE 开发 WordCount 程序，打包成 JAR 文件，提交到 Flink 中运行。
 
-### 二、Spark 读取文件系统的数据
+### 2. 数据流词频统计
 
 使用 Linux 操作系统自带的 NC 程序模拟生成数据流，不断产生单词并发送出去。编写 Flink 程序对 NC 程序发来的单词进行实时处理，计算词频，并输出词频统计结果。要求在 IDE 中开发和调试程序，然后打包成 JAR 包部署到 Flink 中运行。
