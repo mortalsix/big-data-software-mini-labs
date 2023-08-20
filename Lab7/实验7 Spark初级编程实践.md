@@ -25,7 +25,7 @@
 
 ##### 3. 编程读取 HDFS 文件
 
-编写独立应用程序，读取 HDFS 文件 /user/hadoop/test.txt ，然后统计出文件的行数；通过 sbt 将整个应用程序编译打包成 Jar 包，并将生成的 Jar 包通过 spark-submit 提交到 Spark 中运行。
+编写独立应用程序，读取 HDFS 文件 /user/hadoop/test.txt ，然后统计出文件的行数；通过 sbt 将整个应用程序编译打包成 JAR 包，并将生成的 JAR 包通过 spark-submit 提交到 Spark 中运行。
 
 ### 三、编写 Spark 独立应用程序实现数据去重
 
