@@ -9,126 +9,74 @@
 - Hive 版本：3.1.3
 
 # 实验内容和要求
-### 一、编程实现文件合并和去重操作
-对于两个输入文件，即文件 A 和文件 B ，请编写 MapReduce 程序，对两个文件进行合并，并剔除其中重复的内容，得到一个新的输出文件 C 。下面是输入文件和输出文件的一个样例，以供参考。
+### 1. 创建内部表
+创建一个内部表 stocks ，字段分隔符为英文逗号，表结构如表 1 所示：
 
-输入文件 A 的样例如下：
+> 表 1 stocks 表结构 
 
-```
-20210501 x
-20210502 y
-20210503 x
-20210504 y
-20210505 z
-20210506 x
-```
+|col_name|data_type|
+| ---- | ---- |
+| exchange | string |
+| symbol | string |
+| ymd | string |
+| price_open | float |
+| price_high | float |
+| price_low | float |
+| price_close | float |
+| volume | int |
+| price_adj_close | float |
 
-输入文件 B 的样例如下：
 
-```
-20210501 y
-20210502 y
-20210503 x
-20210504 z
-20210505 y
-```
+### 2. 创建外部分区表
 
-根据输入文件 A 和 B 合并得到的输出文件 C 的样例如下：
+创建一个外部分区表 dividends （分区字段为 exchange 和 symbol ），字段分隔符为英文逗号，表结构如表 2 所示：
 
-```
-20210501 x
-20210501 y
-20210502 y
-20210503 x
-20210504 y
-20210504 z
-20210505 z
-20210505 y
-20210506 x
-```
+> 表 2 dividends 表结构 
 
-### 二、编程实现对输入文件的排序
+|col_name|data_type|
+| ---- | ---- |
+| ymd | string |
+| dividend | float |
+| exchange | string |
+| symbol | string |
 
-现在有多个输入文件，每个文件中的每行内容均为一个整数。要求读取所有文件中的整数，进行升序排列后，将 其输出到一个新文件中，输出的数据格式为每行两个整数，第一个整数为第二个整数的排序位次，第二个整数为 原待排列的整数。下面是输入文件和输出文件的一个样例，以供参考。 
+### 3. 导入数据到 Hive 内部表
 
-输入文件 1 的样例如下：
+从 stocks.csv 文件向 stocks 表中导入数据。
 
-```
-33
-37
-12
-40
-```
+### 4. 创建未分区外部表并导入数据
 
-输入文件 2 的样例如下：
+创建一个未分区的外部表 dividends_unpartitioned ，并从 dividends.csv 向其中导入数据，表结构如表 3 所示：
 
-```
-4
-16
-39
-5
-```
+> 表 3 dividends_unpartitioned 表结构 
 
-输入文件 3 的样例如下：
+|col_name|data_type|
+| ---- | ---- |
+| ymd | string |
+| dividend | float |
+| exchange | string |
+| symbol | string |
 
-```
-1
-45
-25
-```
+### 5. 利用 Hive 自动分区特性向分区表插入数据
 
-根据输入文件 1 、 2 和 3 得到的输出文件如下：
+以针对 dividends_unpartitioned 的查询为基础，利用 Hive 自动分区特性向分区表 dividends 各个分区中插入对应数据。
 
-```
-1 1
-2 4
-3 5
-4 12
-5 16
-6 25
-7 33
-8 37
-9 39
-10 40
-11 45
-```
+### 6. Hive 表连接查询
 
-### 三、对给定的表格信息进行信息挖掘
+查询 IBM （ symbol = IBM ）从 2000 年起所有支付股息的交易日（ dividends 表中有对应记录）的收盘价（ price_close ）。
 
-下面给出一个 child-parent 的表格，要求挖掘其中的父子关系，给出祖孙关系的表格。 输入文件内容如下：
+### 7. Hive 查询输出结果自定义映射
 
-```
-child parent
-Steven Lucy
-Steven Jack
-Jone Lucy
-Jone Jack
-Lucy Mary
-Lucy Frank
-Jack Alice
-Jack Jesse
-David Alice
-David Jesse
-Philip David
-Philip Alma
-Mark David
-Mark Alma
-```
+查询苹果公司（ symbol = AAPL ） 2008 年 10 月每个交易日的涨跌情况，涨显示 rise ，跌显示 fall ，不变显示 unchange 。
 
-输出文件内容如下：
+### 8. Hive 数据表排序并限制输出结果条数
 
-```
-grandchild grandparent
-Steven Alice
-Steven Jesse
-Jone Alice
-Jone Jesse
-Steven Mary
-Steven Frank
-Jone Mary
-Jone Frank
-Philip Alice
-Philip Jesse
-Mark Alice
-Mark Jesse
-```
+查询 stocks 表中收盘价（ price_close ）比开盘价（ price_open ）高得最多的那条记录的交易所（ exchange ）、股票代码（ symbol ）、日期（ ymd ）、收盘价、开盘价及二者差价。
+
+### 9. Hive 表数据聚合查询
+
+从 stocks 表中查询苹果公司（ symbol = AAPL ）年平均调整后收盘价（ price_adj_close ）大于 50 美元（约 352.51 元）的年份及年平均调整后收盘价。
+
+### 10. Hive 表嵌套查询
+
+查询每年年平均调整后收盘价（ price_adj_close ）前三名的公司的股票代码及年平均调整后收盘价。

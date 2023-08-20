@@ -32,7 +32,7 @@
 ##### 10. 移动 HDFS 文件或目录
     在 HDFS 中将文件从源路径移动到目的路径。
 
-### 二、编程实现按行读取指定 HDFS 文件内容的功能函数 `readLine()`
+### 二、编程实现按行读取指定 HDFS 文件内容
 ```java
 public class App {
     static void main(String[] args) {
