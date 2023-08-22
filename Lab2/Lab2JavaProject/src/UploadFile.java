@@ -9,8 +9,8 @@ import org.apache.hadoop.fs.Path;
 
 public class UploadFile {
     public static void main(String[] args) throws IOException {
-        String srcfile = "local_file";
-        String dstfile = "hdfs_file";
+        String srcfile = "local_file";  // 这里需要替换成实际的本地文件路径，如 /tmp/lab1/test.txt
+        String dstfile = "hdfs_file";   // 这里需要替换成实际的 HDFS 文件路径，如 /lab1/uploadtest/test.txt
         // 生成必要的 HDFS 配置对象
         Configuration conf = new Configuration();
         // 设置文件系统使用 HDFS
