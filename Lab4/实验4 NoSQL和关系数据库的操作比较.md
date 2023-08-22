@@ -53,26 +53,26 @@
 | zhangsan | 69 | 86 | 77 |
 | lisi | 55 | 100 | 88 |
 
-##### 1. 创建 HBase 表
+##### 7. 创建 HBase 表
 根据表 2 ，用 HBase Shell 命令创建学生（Student）表。
 
-##### 2. 输出 HBase 表元数据
+##### 8. 输出 HBase 表元数据
 用 scan 命令浏览 Student 表的相关信息。
 
-##### 3. 查询 HBase 表数据
+##### 9. 查询 HBase 表数据
 查询 zhangsan 的 Computer 成绩。
 
-##### 4. 修改 HBase 表数据
+##### 10. 修改 HBase 表数据
 修改 lisi 的 Math 成绩为 95。
 
-##### 5. 使用 Java 编程向 HBase 添加数据
+##### 11. 使用 Java 编程向 HBase 添加数据
 向 Student 表中添加如下所示的一条记录：
 
 |Name|English|Math|Computer|
 | ---- | ---- | ---- | ---- |
 | scofield | 45 | 89 | 100 |
 
-##### 6. 使用 Java 编程查询 HBase 表数据
+##### 12. 使用 Java 编程查询 HBase 表数据
 从 Student 表获取 scofield 的 English 成绩信息。
 
 ### 三、Redis 数据库操作
@@ -91,19 +91,19 @@ lisi: {
 }
 ```
 
-##### 1. 创建 Redis 键值结构
+##### 13. 创建 Redis 键值结构
 用 Redis 的哈希结构设计出 Student 表（键值可以用 student.zhangsan 和 student.lisi 来表示两个键值属于同一个表）。
 
-##### 2. 输出 Redis 键值数据
+##### 14. 输出 Redis 键值数据
 用 hgetall 命令分别输出 zhangsan 和 lisi 的成绩信息。
 
-##### 3. 查询 Redis 键值数据
+##### 15. 查询 Redis 键值数据
 用 hget 命令查询 zhangsan 的 Computer 成绩。
 
-##### 4. 修改 Redis 键值数据
+##### 16. 修改 Redis 键值数据
 修改 lisi 的 Math 成绩为 95。
 
-##### 5. 使用 Java 编程向 Redis 添加数据
+##### 17. 使用 Java 编程向 Redis 添加数据
 向 Student 表中添加如下所示的一条记录。该数据对应的键值对形式如下：
 
 ```js
@@ -114,7 +114,7 @@ scofield: {
 }
 ```
 
-##### 6. 使用 Java 编程查询 Redis 键值数据
+##### 18. 使用 Java 编程查询 Redis 键值数据
 获取 scofield 的 English 成绩信息。
 
 ### 四、MongoDB 数据库操作
@@ -139,19 +139,19 @@ scofield: {
 }
 ```
 
-##### 1. 创建 MongoDB 集合
+##### 19. 创建 MongoDB 集合
 用 MongoDB Shell 设计出 Student 集合。
 
-##### 2. 输出 MongoDB 集合数据
+##### 20. 输出 MongoDB 集合数据
 用 find() 方法输出两个学生的信息。
 
-##### 3. 查询 MongoDB 文档数据
+##### 21. 查询 MongoDB 文档数据
 用 find() 方法查询 zhangsan 的所有成绩（只显示 score 列）。
 
-##### 4. 修改 MongoDB 文档数据
+##### 22. 修改 MongoDB 文档数据
 修改 lisi 的 Math 成绩为 95。
 
-##### 5. 使用 Java 编程向 MongoDB 添加记录
+##### 23. 使用 Java 编程向 MongoDB 添加记录
 向 Student 表中添加如下所示的一条记录。该数据对应的文档形式如下：
 
 ```js
@@ -165,5 +165,5 @@ scofield: {
 }
 ```
 
-##### 6. 使用 Java 编程查询 MongoDB 文档数据
+##### 24. 使用 Java 编程查询 MongoDB 文档数据
 获取 scofield 的 English 成绩信息（只显示 score 列）。

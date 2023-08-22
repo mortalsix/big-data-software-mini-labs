@@ -49,24 +49,26 @@
 | 2015003 | 123001 | 98 |
 | 2015003 | 123002 | 95 |
 
-##### 1. 将表1、表2和表3中的数据转换为适合 HBase 存储的表，并使用 HBase Shell 命令插入数据。
+##### 6. 创建表并插入数据
 
-##### 2. 编程实现功能 `createTable(String tableName, String[] fields)` 
+将表1、表2和表3中的数据转换为适合 HBase 存储的表，并使用 HBase Shell 命令插入数据。
+
+##### 7. 编程实现功能 `createTable(String tableName, String[] fields)` 
 
 功能描述：创建表，参数 tableName 为表的名称，字符串数组 fields 为存储记录各个域名称的数组。要求当 HBase 已经存在名为 tableName 的表的时候，先删除原有的表，再创建新的表。
 
-##### 3. 编程实现功能 `addRecord(String tableName, String row, String[] fields, String[] values)` 
+##### 8. 编程实现功能 `addRecord(String tableName, String row, String[] fields, String[] values)` 
 
 功能描述：向表 tableName、行 row（用 S_Name 表示）和字符串数组fields指定的单元格中添加对应的数据 values。其中，如果fields中每个元素对应的列族下还有相应的列限定符， 用 columnFamily:column 表示。 例如同时向 Math、 Computer Science、 English 3列添加成绩时， 字符串数组 fields 为 {"Score:Math", "Score:Computer Science", "Score:English"}， 数组 values 存储这3门课的成绩。
 
-##### 4. 编程实现功能 `scanColumn(String tableName, String column)`  
+##### 9. 编程实现功能 `scanColumn(String tableName, String column)`  
 
 功能描述：浏览表 tableName 某一列的数据， 如果某一行记录中该列数据不存在， 则返回 null 。 要求当参数  column 为某一列族名称时， 如果底下有若干个列限定符， 则列出每个列限定符代表的列的数据； 当参数 column 为某一列具体名称（ 如 Score:Math ） 时， 只需要列出该列的数据。
 
-##### 5. 编程实现功能 `modifyData(String tableName, String row, String column)` 
+##### 10. 编程实现功能 `modifyData(String tableName, String row, String column)` 
 
 功能描述：修改表 tableName、 行 row （可以用学生姓名 S_Name 表示） 、 列 column 指定的单元格的数据。
 
-##### 6. 编程实现功能 `deleteRow(String tableName, String row)` 
+##### 11. 编程实现功能 `deleteRow(String tableName, String row)` 
 
 功能描述：删除表 tableName 中 row 指定的行的记录。
