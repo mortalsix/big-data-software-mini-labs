@@ -10,69 +10,9 @@
 - Java IDE：Visual Studio Code
 
 # 实验内容和要求
-### 一、编程实现以下指定功能，并利用 Hadoop 提供的 Shell 命令完成相同的任务
+### 编程实现以下指定功能，并利用 Hadoop 提供的 Shell 命令完成相同的任务
 ##### 1. 上传文件到 HDFS
 向 HDFS 中上传任意文本文件，如果指定的文件在 HDFS 中已经存在，由用户指定是追加到原有文件末尾还是覆盖原有的文件。
-
-Java 编程参考代码：
-
-```java
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Scanner;
-
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSDataOutputStream;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
-
-public class UploadFile {
-    public static void main(String[] args) throws IOException {
-        String srcfile = "/home/fzw/.bashrc";
-        String dstfile = "/lab/tmp/bashrc";
-        // 生成必要的 HDFS 配置对象
-        Configuration conf = new Configuration();
-        // 设置文件系统使用 HDFS
-        conf.set("fs.defaultFS", "hdfs://localhost:9000");
-        // 获取文件系统对象
-        FileSystem fileSystem = FileSystem.get(conf);
-        // 生成 Hadoop 支持的路径对象
-        Path srcfile_path = new Path(srcfile);
-        Path dstfile_path = new Path(dstfile);
-        // 判断 HDFS 文件是否存在
-        if (fileSystem.exists(dstfile_path)) {
-            // HDFS 文件存在，输出信息提示
-            System.out.println(dstfile_path.toString() + " 已经存在");
-            // 询问用户是要追加到原有文件末尾，还是要覆盖原 HDFS 文件，将用户的选择记录在 user_choice 字符串中
-            System.out.print("是要覆盖原文件还是追加到文件末尾？选择覆盖输入 1 ，选择追加输入 2 ，请输入：");
-            Scanner scanner = new Scanner(System.in);
-            String user_choice = scanner.next();
-            if (user_choice.equals("1")) {
-                // 覆盖原文件
-                fileSystem.copyFromLocalFile(false, true, srcfile_path, dstfile_path);
-            } else if (user_choice.equals("2")) {
-                // 追加到文件末尾
-                FileInputStream in = new FileInputStream(srcfile);
-                FSDataOutputStream out = fileSystem.append(dstfile_path);
-                byte[] data = new byte[1024];
-                
-                int read = in.read(data);
-                while (read > 0) {
-                    out.write(data);
-                    read = in.read(data);
-                }
-                out.close();
-                in.close();
-            }
-        } else {
-            // HDFS 文件不存在，直接上传 
-            fileSystem.copyFromLocalFile(srcfile_path, dstfile_path);
-        }
-        // 不管作何处理，最终要关闭 Hadoop 文件系统对象
-        fileSystem.close();
-    }
-}
-```
 
 Shell 命令参考：
 
@@ -85,36 +25,94 @@ hadoop fs -appendToFile {local_file_path} {hdfs_file_path} # 上传本地文件�
 ##### 2. 从 HDFS 下载文件
 从 HDFS 中下载指定文件，如果本地文件与要下载的文件名称相同，则自动对下载的文件重命名。
 
+Shell 命令参考：
+
+```bash
+if $(hadoop fs -test -e file:///home/hadoop/text.txt);
+then $(hadoop fs -copyToLocal text.txt ./text2.txt); 
+else $(hadoop fs -copyToLocal text.txt ./text.txt); 
+fi
+```
+
 ##### 3. 输出 HDFS 文件内容
 将 HDFS 中指定文件的内容输出到终端。
+
+Shell 命令参考：
+
+```bash
+hadoop fs -cat text.txt
+```
 
 ##### 4. 输出 HDFS 文件详细信息
 显示 HDFS 中指定的文件读写权限、大小、创建时间、路径等信息。
 
+Shell 命令参考：
+
+```bash
+hadoop fs -ls -h text.txt
+```
+
 ##### 5. 递归输出 HDFS 目录下所有文件信息
 给定 HDFS 中某一个目录，输出该目录下的所有文件的读写权限、大小、创建时间、路径等信息，如果该文件是目录，则递归输出该目录下所有文件相关信息。
+
+Shell 命令参考：
+
+```bash
+hadoop fs -ls -R -h /user/hadoop
+```
 
 ##### 6. 创建、删除 HDFS 文件
 提供一个 HDFS 中的文件的路径，对该文件进行创建和删除操作。如果文件所在目录不存在，则自动创建目录。
 
+Shell 命令参考：
+
+```bash
+if $(hadoop fs -test -d dir1/dir2);
+then $(hadoop fs -touchz dir1/dir2/filename); 
+else $(hadoop fs -mkdir -p dir1/dir2 && hadoop fs -touchz dir1/dir2/filename); 
+fi
+hadoop fs -rm dir1/dir2/filename   #删除文件
+```
+
 ##### 7. 创建、删除 HDFS 目录
 提供一个 HDFS 的目录的路径，对该目录进行创建和删除操作。创建目录时，如果目录所在目录不存在则自动创建相应目录；删除目录时，由用户指定当该目录不为空时是否还删除该目录。
+
+Shell 命令参考：
+
+```bash
+hadoop fs -mkdir -p dir1/dir2
+hadoop fs -rmdir dir1/dir2
+hadoop fs -rm -R dir1/dir2
+```
 
 ##### 8. 向 HDFS 文件追加内容
 向 HDFS 中指定的文件追加内容，由用户指定将内容追加到原有文件的开头或结尾。
 
+Shell 命令参考：
+
+```bash
+hadoop fs -appendToFile local.txt text.txt
+hadoop fs -get text.txt
+cat text.txt >> local.txt
+hadoop fs -copyFromLocal -f text.txt text.txt
+```
+
 ##### 9. 删除 HDFS 文件
 删除 HDFS 中指定的文件。
 
+Shell 命令参考：
+
+```bash
+hadoop fs -rm text.txt
+```
+
 ##### 10. 移动 HDFS 文件或目录
 在 HDFS 中将文件从源路径移动到目的路径。
-    
 
-### 二、编程实现按行读取指定 HDFS 文件内容
-```java
-public class App {
-    static void main(String[] args) {
+Shell 命令参考：
 
-    }
-}
+```bash
+hadoop fs -mv text.txt text2.txt
 ```
+    
+##### 11. 编程实现按行读取指定 HDFS 文件内容（此题不需要使用 Shell 命令实现）
