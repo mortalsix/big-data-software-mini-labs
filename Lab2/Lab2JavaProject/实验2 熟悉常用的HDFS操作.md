@@ -10,7 +10,7 @@
 - Java IDE：Visual Studio Code
 
 # 实验内容和要求
-### 一、编程实现以下指定功能，并利用 Hadoop 提供的 Shell 命令完成相同的任务
+### 编程实现以下指定功能，并利用 Hadoop 提供的 Shell 命令完成相同的任务
 ##### 1. 上传文件到 HDFS
 向 HDFS 中上传任意文本文件，如果指定的文件在 HDFS 中已经存在，由用户指定是追加到原有文件末尾还是覆盖原有的文件。
 
@@ -73,7 +73,8 @@ hadoop fs -appendToFile {local_file_path} {hdfs_file_path} # 上传本地文件�
 在 HDFS 中将文件从源路径移动到目的路径。
     
 
-### 二、编程实现按行读取指定 HDFS 文件内容
+##### 11. 编程实现按行读取指定 HDFS 文件内容 (此题不需要使用 Shell 命令实现)
+
 ```java
 public class App {
     static void main(String[] args) {

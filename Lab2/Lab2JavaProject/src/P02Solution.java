@@ -5,10 +5,10 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
-public class P02DownloadFile {
+public class P02Solution {
     public static void main(String[] args) throws IOException {
-        String srcfile = "/lab/tmp/bashrc";   // 这里需要替换成实际的 HDFS 文件路径，如 /lab1/downloadtest/test.txt
-        String dstfile = "local_file";  // 这里需要替换成实际的本地文件路径，如 /tmp/lab1/test.txt
+        String srcfile = "/lab2/input/p02.txt";  // HDFS 文件路径
+        String dstfile = "output/p02.txt";       // 本地文件路径
 
         // 生成必要的 HDFS 配置对象
         Configuration conf = new Configuration();
