@@ -17,8 +17,19 @@
 Java 编程参考代码：
 
 ```java
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+
 public class UploadFile {
     public static void main(String[] args) throws IOException {
+        String srcfile = "/home/fzw/.bashrc";
+        String dstfile = "/lab/tmp/bashrc";
         // 生成必要的 HDFS 配置对象
         Configuration conf = new Configuration();
         // 设置文件系统使用 HDFS
@@ -26,23 +37,25 @@ public class UploadFile {
         // 获取文件系统对象
         FileSystem fileSystem = FileSystem.get(conf);
         // 生成 Hadoop 支持的路径对象
-        Path srcfile_path = new Path("local_file_path_string");
-        Path dstfile_path = new Path("hdfs_file_path_string");
+        Path srcfile_path = new Path(srcfile);
+        Path dstfile_path = new Path(dstfile);
         // 判断 HDFS 文件是否存在
-        if (fileSystem.exists(destfile_path)) {
+        if (fileSystem.exists(dstfile_path)) {
             // HDFS 文件存在，输出信息提示
-            System.out.println(destfile_path.toString() + " 已经存在");
+            System.out.println(dstfile_path.toString() + " 已经存在");
             // 询问用户是要追加到原有文件末尾，还是要覆盖原 HDFS 文件，将用户的选择记录在 user_choice 字符串中
             System.out.print("是要覆盖原文件还是追加到文件末尾？选择覆盖输入 1 ，选择追加输入 2 ，请输入：");
-            String user_choice = System.in.read();
+            Scanner scanner = new Scanner(System.in);
+            String user_choice = scanner.next();
             if (user_choice.equals("1")) {
                 // 覆盖原文件
                 fileSystem.copyFromLocalFile(false, true, srcfile_path, dstfile_path);
             } else if (user_choice.equals("2")) {
                 // 追加到文件末尾
-                FileInputStream in = new FileInputStream(srcfile_path);
-                FSDataOutputStream out = fileSytem.append(dstfile_path);
+                FileInputStream in = new FileInputStream(srcfile);
+                FSDataOutputStream out = fileSystem.append(dstfile_path);
                 byte[] data = new byte[1024];
+                
                 int read = in.read(data);
                 while (read > 0) {
                     out.write(data);
@@ -60,6 +73,7 @@ public class UploadFile {
     }
 }
 ```
+
 Shell 命令参考：
 
 ```bash
