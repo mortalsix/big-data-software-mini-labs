@@ -1,3 +1,9 @@
+/**
+ * 实验 2 
+ * 问题 3. 输出 HDFS 文件内容
+ * 将 HDFS 中指定文件的内容输出到终端。
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;

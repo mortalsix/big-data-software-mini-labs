@@ -1,3 +1,10 @@
+/**
+ * 实验 2 
+ * 问题 1. 上传文件到 HDFS
+ * 向 HDFS 中上传任意文本文件，如果指定的文件在 HDFS 中已经存在，
+ * 由用户指定是追加到原有文件末尾还是覆盖原有的文件
+ */
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;

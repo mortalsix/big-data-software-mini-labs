@@ -1,3 +1,9 @@
+/**
+ * 实验 2 
+ * 问题 4. 输出 HDFS 文件详细信息
+ * 显示 HDFS 中指定的文件读写权限、大小、创建时间、路径等信息。
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;

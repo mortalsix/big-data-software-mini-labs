@@ -1,3 +1,8 @@
+/**
+ * 实验 2 
+ * 问题 11. 编程实现按行读取指定 HDFS 文件内容
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;

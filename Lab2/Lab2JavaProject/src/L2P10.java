@@ -1,3 +1,9 @@
+/**
+ * 实验 2 
+ * 问题 10. 移动 HDFS 文件或目录
+ * 在 HDFS 中将文件从源路径移动到目的路径。
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;

@@ -1,3 +1,10 @@
+/**
+ * 实验 2 
+ * 问题 5. 递归输出 HDFS 目录下所有文件信息
+ * 给定 HDFS 中某一个目录，输出该目录下的所有文件的读写权限、大小、创建时间、
+ * 路径等信息，如果该文件是目录，则递归输出该目录下所有文件相关信息。
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;

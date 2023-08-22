@@ -1,3 +1,9 @@
+/**
+ * 实验 2 
+ * 问题 8. 向 HDFS 文件追加内容
+ * 向 HDFS 中指定的文件追加内容，由用户指定将内容追加到原有文件的开头或结尾。
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;

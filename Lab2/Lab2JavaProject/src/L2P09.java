@@ -1,3 +1,9 @@
+/**
+ * 实验 2 
+ * 问题 9. 删除 HDFS 文件
+ * 删除 HDFS 中指定的文件。
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;

@@ -1,3 +1,10 @@
+/**
+ * 实验 2 
+ * 问题 6. 创建、删除 HDFS 文件
+ * 提供一个 HDFS 中的文件的路径，对该文件进行创建和删除操作。
+ * 如果文件所在目录不存在，则自动创建目录。
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;

@@ -1,3 +1,11 @@
+/**
+ * 实验 2 
+ * 问题 7. 创建、删除 HDFS 目录
+ * 提供一个 HDFS 的目录的路径，对该目录进行创建和删除操作。
+ * 创建目录时，如果目录所在目录不存在则自动创建相应目录；
+ * 删除目录时，由用户指定当该目录不为空时是否还删除该目录。
+ */
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;

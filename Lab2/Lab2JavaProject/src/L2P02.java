@@ -1,3 +1,10 @@
+/**
+ * 实验 2 
+ * 问题 2. 从 HDFS 下载文件
+ * 从 HDFS 中下载指定文件，如果本地文件与要下载的文件名称相同，
+ * 则自动对下载的文件重命名。
+ */
+
 import java.io.File;
 import java.io.IOException;
 
