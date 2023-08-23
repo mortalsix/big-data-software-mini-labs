@@ -7,7 +7,7 @@
 - 操作系统：Ubuntu 22.04
 - JDK 版本：JDK 1.8.0_162
 - Hadoop 版本：3.3.5
-- MySQL 版本：5.6
+- MySQL 版本：8.0
 - Redis 版本：7.2
 - MongoDB 版本：7.0
 - Java IDE：Visual Studio Code
