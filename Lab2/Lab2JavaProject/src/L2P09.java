@@ -8,7 +8,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;
  
-public class P09Solution {
+public class L2P09 {
     /**
      * 删除文件
      */
