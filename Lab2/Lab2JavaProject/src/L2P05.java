@@ -45,7 +45,7 @@ public class L2P05 {
  
         try {
             System.out.println("(递归)读取目录下所有文件的信息: " + remoteDir);
-            P05Solution.lsDir(conf, remoteDir);
+            L2P05.lsDir(conf, remoteDir);
             System.out.println("读取完成");
         } catch (Exception e) {
             e.printStackTrace();

@@ -86,24 +86,24 @@ public class L2P08 {
  
         try {
             /* 判断文件是否存在 */
-            if ( !P08Solution.test(conf, remoteFilePath) ) {
+            if ( !L2P08.test(conf, remoteFilePath) ) {
                 System.out.println("文件不存在: " + remoteFilePath);
             } else {
                 if ( choice.equals("after") ) { // 追加在文件末尾
-                    P08Solution.appendContentToFile(conf, content, remoteFilePath);
+                    L2P08.appendContentToFile(conf, content, remoteFilePath);
                     System.out.println("已追加内容到文件末尾" + remoteFilePath);
                 } else if ( choice.equals("before") )  { // 追加到文件开头
                     /* 没有相应的api可以直接操作，因此先把文件移动到本地*/
-/*创建一个新的HDFS，再按顺序追加内容 */
+                    /*创建一个新的HDFS，再按顺序追加内容 */
                     String localTmpPath = "/user/hadoop/tmp.txt";
                     // 移动到本地
-P08Solution.moveToLocalFile(conf, remoteFilePath, localTmpPath);
-   // 创建一个新文件
-                    P08Solution.touchz(conf, remoteFilePath); 
+                    L2P08.moveToLocalFile(conf, remoteFilePath, localTmpPath);
+                    // 创建一个新文件
+                    L2P08.touchz(conf, remoteFilePath); 
                     // 先写入新内容
-                    P08Solution.appendContentToFile(conf, content, remoteFilePath);
+                    L2P08.appendContentToFile(conf, content, remoteFilePath);
                     // 再写入原来内容
-                    P08Solution.appendToFile(conf, localTmpPath, remoteFilePath); 
+                    L2P08.appendToFile(conf, localTmpPath, remoteFilePath); 
                     System.out.println("已追加内容到文件开头: " + remoteFilePath);
                 }
             }

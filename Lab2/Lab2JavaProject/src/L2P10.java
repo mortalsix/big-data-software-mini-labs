@@ -31,7 +31,7 @@ public class L2P10 {
         String remoteToFilePath = "hdfs:///user/hadoop/new.txt";    // 目的HDFS路径
  
         try {
-            if ( P10Solution.mv(conf, remoteFilePath, remoteToFilePath) ) {
+            if ( L2P10.mv(conf, remoteFilePath, remoteToFilePath) ) {
                 System.out.println("将文件 " + remoteFilePath + " 移动到 " + remoteToFilePath);
             } else {
                     System.out.println("操作失败(源文件不存在或移动失败)");

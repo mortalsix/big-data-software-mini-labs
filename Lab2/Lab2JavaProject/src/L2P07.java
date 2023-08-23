@@ -64,12 +64,12 @@ public class L2P07 {
  
         try {
             /* 判断目录是否存在，不存在则创建，存在则删除 */
-            if ( !P07Solution.test(conf, remoteDir) ) {
-                P07Solution.mkdir(conf, remoteDir); // 创建目录
+            if ( !L2P07.test(conf, remoteDir) ) {
+                L2P07.mkdir(conf, remoteDir); // 创建目录
                 System.out.println("创建目录: " + remoteDir);
             } else {
-                if ( P07Solution.isDirEmpty(conf, remoteDir) || forceDelete ) { // 目录为空或强制删除
-                    P07Solution.rmDir(conf, remoteDir);
+                if ( L2P07.isDirEmpty(conf, remoteDir) || forceDelete ) { // 目录为空或强制删除
+                    L2P07.rmDir(conf, remoteDir);
                     System.out.println("删除目录: " + remoteDir);
                 } else  { // 目录不为空
                     System.out.println("目录不为空，不删除: " + remoteDir);

@@ -29,7 +29,7 @@ public class L2P09 {
         String remoteFilePath = "/user/hadoop/text.txt";    // HDFS文件
  
         try {
-            if ( P09Solution.rm(conf, remoteFilePath) ) {
+            if ( L2P09.rm(conf, remoteFilePath) ) {
                 System.out.println("文件删除: " + remoteFilePath);
             } else {
                 System.out.println("操作失败（文件不存在或删除失败）");

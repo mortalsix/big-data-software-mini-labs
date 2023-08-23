@@ -62,15 +62,15 @@ public class L2P06 {
  
         try {
             /* 判断路径是否存在，存在则删除，否则进行创建 */
-            if ( P06Solution.test(conf, remoteFilePath) ) {
-                P06Solution.rm(conf, remoteFilePath); // 删除
+            if ( L2P06.test(conf, remoteFilePath) ) {
+                L2P06.rm(conf, remoteFilePath); // 删除
                 System.out.println("删除路径: " + remoteFilePath);
             } else {
-                if ( !P06Solution.test(conf, remoteDir) ) { // 若目录不存在，则进行创建
-                    P06Solution.mkdir(conf, remoteDir);
+                if ( !L2P06.test(conf, remoteDir) ) { // 若目录不存在，则进行创建
+                    L2P06.mkdir(conf, remoteDir);
                     System.out.println("创建文件夹: " + remoteDir);
                 }
-                P06Solution.touchz(conf, remoteFilePath);
+                L2P06.touchz(conf, remoteFilePath);
                 System.out.println("创建路径: " + remoteFilePath);
             }
         } catch (Exception e) {

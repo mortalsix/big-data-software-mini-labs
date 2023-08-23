@@ -36,7 +36,7 @@ public class L2P03 {
  
         try {
             System.out.println("读取文件: " + remoteFilePath);
-            P03Solution.cat(conf, remoteFilePath);
+            L2P03.cat(conf, remoteFilePath);
             System.out.println("\n读取完成");
         } catch (Exception e) {
             e.printStackTrace();

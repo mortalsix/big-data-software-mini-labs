@@ -43,7 +43,7 @@ public class L2P11 {
         FSDataInputStream in = fs.open(remotePath);
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
         String line = null;
-        while ( (line = P11Solution.readline(br)) != null ) {
+        while ( (line = L2P11.readline(br)) != null ) {
             System.out.println(line);
         }
         br.close();
@@ -59,7 +59,7 @@ public class L2P11 {
         conf.set("fs.default.name","hdfs://localhost:9000");
         String remoteFilePath = "/user/hadoop/text.txt";    // HDFS路径
         try {
-            P11Solution.cat(conf, remoteFilePath);
+            L2P11.cat(conf, remoteFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }

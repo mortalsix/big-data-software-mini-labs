@@ -40,7 +40,7 @@ public class L2P04 {
  
         try {
             System.out.println("读取文件信息: " + remoteFilePath);
-            P04Solution.ls(conf, remoteFilePath);
+            L2P04.ls(conf, remoteFilePath);
             System.out.println("\n读取完成");
         } catch (Exception e) {
             e.printStackTrace();
