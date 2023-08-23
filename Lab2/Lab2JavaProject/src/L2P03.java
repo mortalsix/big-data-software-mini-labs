@@ -8,7 +8,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;
  
-public class P03Solution {
+public class L2P03 {
     /**
      * 读取文件内容
      */

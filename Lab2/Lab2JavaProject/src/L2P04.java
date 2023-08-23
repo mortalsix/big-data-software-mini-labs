@@ -9,7 +9,7 @@ import org.apache.hadoop.fs.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
  
-public class P04Solution {
+public class L2P04 {
     /**
      * 显示指定文件的信息
      */

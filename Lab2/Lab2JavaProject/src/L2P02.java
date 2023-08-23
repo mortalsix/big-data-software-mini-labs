@@ -12,7 +12,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
-public class P02Solution {
+public class L2P02 {
     public static void main(String[] args) throws IOException {
         String srcfile = "/lab2/input/p02.txt";  // HDFS 文件路径
         String dstfile = "output/p02.txt";       // 本地文件路径

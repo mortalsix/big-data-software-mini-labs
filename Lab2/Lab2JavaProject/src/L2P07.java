@@ -10,7 +10,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;
  
-public class P07Solution {
+public class L2P07 {
     /**
      * 判断路径是否存在
      */

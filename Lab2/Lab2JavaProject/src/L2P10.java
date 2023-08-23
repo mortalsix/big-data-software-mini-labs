@@ -8,7 +8,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;
  
-public class P10Solution {
+public class L2P10 {
     /**
      * 移动文件
      */

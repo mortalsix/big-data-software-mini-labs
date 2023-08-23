@@ -9,7 +9,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import java.io.*;
  
-public class P11Solution {
+public class L2P11 {
     /**
      * 实现按行读取
      * 每次读入一个字符，遇到"\n"结束，返回一行内容

@@ -9,7 +9,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import java.io.*;
  
-public class P06Solution {
+public class L2P06 {
     /**
      * 判断路径是否存在
      */

@@ -14,7 +14,7 @@ import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
-public class P01Solution {
+public class L2P01 {
     public static void main(String[] args) throws IOException {
         String srcfile = "input/p01.txt";         // 本地文件路径
         String dstfile = "/lab2/output/p01.txt";  // HDFS 文件路径

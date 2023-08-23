@@ -10,7 +10,7 @@ import org.apache.hadoop.fs.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
  
-public class P05Solution {
+public class L2P05 {
     /**
      * 显示指定文件夹下所有文件的信息（递归）
      */
