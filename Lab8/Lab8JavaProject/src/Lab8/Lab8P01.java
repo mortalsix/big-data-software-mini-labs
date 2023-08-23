@@ -1,3 +1,4 @@
+package Lab8;
 /**
  * 实验 8
  * 问题 1. Flink 上的 WordCount 程序
