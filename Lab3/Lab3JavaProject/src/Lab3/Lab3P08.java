@@ -1,3 +1,4 @@
+package Lab3;
 /**
  * 实验 3 
  * 问题 8. 编程实现功能 addRecord(String tableName, 

@@ -1,3 +1,4 @@
+package Lab3;
 /**
  * 实验 3 
  * 问题 7. 编程实现功能 createTable(String tableName, String[] fields)

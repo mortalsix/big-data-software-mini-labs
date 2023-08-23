@@ -1,3 +1,4 @@
+package Lab3;
 /**
  * 实验 3 
  * 问题 9. 编程实现功能 scanColumn(String tableName, String column)

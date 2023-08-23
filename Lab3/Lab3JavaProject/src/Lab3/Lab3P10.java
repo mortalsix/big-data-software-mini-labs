@@ -1,3 +1,4 @@
+package Lab3;
 /**
  * 实验 3 
  * 问题 10. 编程实现功能 modifyData(String tableName, 
