@@ -159,6 +159,37 @@ sudo chown -R you:you /usr/local/hadoop
 </configuration>
 ```
 
+### 配置ssh无密码登录
+
+(1) ssh连接本机
+```shell
+ssh localhost
+```
+提示输入密码，登录后，退出
+```shell
+exit
+```
+(2) 生成密钥对
+
+```shell
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+```
+
+(3) 分发密钥对
+
+```shell
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+```
+
+(4) 验证是否成功
+```shell
+ssh localhost
+```
+发现不用输入密码，登录后，退出
+```shell
+exit
+```
 
 
 ### 四、熟悉常用的Hadoop操作
