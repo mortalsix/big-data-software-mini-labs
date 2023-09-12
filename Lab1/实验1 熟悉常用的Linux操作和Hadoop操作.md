@@ -124,6 +124,43 @@ sudo chown -R you:you /usr/local/hadoop
 
 ##### 26. 修改 Hadoop 配置文件 core-site.xml 和 hdfs-site.xml
 
+(1) core-site.xml
+
+```xml
+<configuration>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>file:/usr/local/hadoop/tmp</value>
+        <description>Abase for other temporary directories.</description>
+    </property>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+</configuration>
+```
+
+(2) hdfs-site.xml
+
+```
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/usr/local/hadoop/tmp/dfs/name</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/usr/local/hadoop/tmp/dfs/data</value>
+    </property>
+</configuration>
+```
+
+
+
 ### 四、熟悉常用的Hadoop操作
 ##### 27. 创建 HDFS 用户目录
 在 HDFS 中创建用户目录 /user/<username>，其中 <username> 用实际的用户名替换。
