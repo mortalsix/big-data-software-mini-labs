@@ -110,6 +110,18 @@ java -version
 
 
 ##### 25. 解压 Hadoop 压缩包 并更改 Hadoop 文件夹的用户所有权
+
+```shell
+sudo tar -zxvf hadoop-3.3.5.tar.gz -C /usr/local
+sudo mv /usr/local/hadoop-3.3.5 /usr/local/hadoop
+```
+以下代码中的用户名要替换成自己的
+```shell
+sudo chown -R you:you /usr/local/hadoop
+```
+
+
+
 ##### 26. 修改 Hadoop 配置文件 core-site.xml 和 hdfs-site.xml
 
 ### 四、熟悉常用的Hadoop操作
