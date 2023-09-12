@@ -90,19 +90,20 @@
 ##### 24. 解压 JDK 压缩包 并配置 Java 环境变量
 
 (1) 解压
-```shell
+```bash
 sudo mkdir /usr/lib/jvm
-sudo tar -zxf jdk-8u162-linux-x64.tar.gz -C /usr/lib/jvm
+sudo tar -zxf ~/jdk-8u162-linux-x64.tar.gz -C /usr/lib/jvm
 ```
 (2) 修改环境变量，在~/.bashrc文件的开头位置添加如下两行文本：
 
-```shell
+```bash
 export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_162
 export PATH=$PATH:$JAVA_HOME/bin
 ```
+
 (3）让环境变量生效，并检查是否生效
 
-```shell
+```bash
 source ~/.bashrc
 java -version
 ```
@@ -111,20 +112,20 @@ java -version
 
 ##### 25. 解压 Hadoop 压缩包 并更改 Hadoop 文件夹的用户所有权
 
-```shell
+```bash
 sudo tar -zxvf ~/hadoop-3.3.5.tar.gz -C /usr/local
 sudo mv /usr/local/hadoop-3.3.5 /usr/local/hadoop
 ```
 以下代码中的 `you` 要替换成自己的用户名
-```shell
+```bash
 sudo chown -R you:you /usr/local/hadoop
 ```
 
 
 
-##### 26. 修改 Hadoop 配置文件 core-site.xml 和 hdfs-site.xml
+##### 26. 修改 Hadoop 配置文件 `core-site.xml` 和 `hdfs-site.xml`
 
-(1) core-site.xml
+(1) 将 `core-site.xml` 文件的配置项修改如下：
 
 ```xml
 <configuration>
@@ -140,9 +141,9 @@ sudo chown -R you:you /usr/local/hadoop
 </configuration>
 ```
 
-(2) hdfs-site.xml
+(2) 将 `hdfs-site.xml` 文件的配置项修改如下：
 
-```
+```xml
 <configuration>
     <property>
         <name>dfs.replication</name>
@@ -159,45 +160,63 @@ sudo chown -R you:you /usr/local/hadoop
 </configuration>
 ```
 
-### 配置ssh无密码登录
+##### 27. 配置ssh无密码登录
 
 (1) ssh连接本机
-```shell
+```bash
 ssh localhost
 ```
 提示输入密码，登录后，退出
-```shell
+```bash
 exit
 ```
 (2) 生成密钥对
 
-```shell
+```bash
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 ```
 
 (3) 分发密钥对
 
-```shell
+```bash
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 0600 ~/.ssh/authorized_keys
 ```
 
 (4) 验证是否成功
-```shell
+```bash
 ssh localhost
 ```
 发现不用输入密码，登录后，退出
-```shell
+```bash
 exit
 ```
 
+##### 28. 初始化 Hadoop 文件系统 HDFS，启动 HDFS 相关服务
+
+(1) 初始化
+```bash
+/usr/local/hadoop/bin/hdfs namenode -format
+```
+
+(2) 启动 HDFS 服务
+```bash
+/usr/local/hadoop/sbin/start-dfs.sh
+```
+
+(3) 检查是否启动成功
+```bash
+jps
+```
+如果显示出来的 Java 进程包括 `NameNode`、`DataNode`、`SecondaryNameNode`，说明启动成功；反之说明启动失败。
+
 
 ### 四、熟悉常用的Hadoop操作
-##### 27. 创建 HDFS 用户目录
+##### 29. 创建 HDFS 用户目录
 在 HDFS 中创建用户目录 /user/<username>，其中 <username> 用实际的用户名替换。
 
-##### 28. 将本地文件上传到 HDFS
+##### 30. 将本地文件上传到 HDFS
 在上一步创建的用户目录中创建 test 文件夹，并将 Linux 操作系统本地的 ~/.bashrc 文件上传到上一步创建的 test 文件夹中，并查看 HDFS 中的 test 目录。
 
-##### 29. 从 HDFS 复制文件到本地
+##### 31. 从 HDFS 复制文件到本地
 将上一步 HDFS 中 test 目录中的 .bashrc 文件复制到 Linux 操作系统本地文件系统的 /usr/local/hadoop 目录下
