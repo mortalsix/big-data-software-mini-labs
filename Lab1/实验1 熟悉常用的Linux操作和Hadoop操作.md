@@ -115,7 +115,7 @@ java -version
 sudo tar -zxvf hadoop-3.3.5.tar.gz -C /usr/local
 sudo mv /usr/local/hadoop-3.3.5 /usr/local/hadoop
 ```
-以下代码中的用户名要替换成自己的
+以下代码中的 `you` 要替换成自己的用户名
 ```shell
 sudo chown -R you:you /usr/local/hadoop
 ```
