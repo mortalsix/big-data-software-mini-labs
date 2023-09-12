@@ -88,6 +88,27 @@
 ### 三、进行Hadoop伪分布式安装
 ##### 23. 使用 MobaXterm 传送 jdk 压缩包 和 Hadoop 压缩包
 ##### 24. 解压 JDK 压缩包 并配置 Java 环境变量
+
+(1) 解压
+```shell
+sudo mkdir /usr/lib/jvm
+sudo tar -zxf jdk-8u162-linux-x64.tar.gz -C /usr/lib/jvm
+```
+(2) 修改环境变量，在~/.bashrc文件的开头位置添加如下两行文本：
+
+```shell
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_162
+export PATH=$PATH:$JAVA_HOME/bin
+```
+(3）让环境变量生效，并检查是否生效
+
+```shell
+source ~/.bashrc
+java -version
+```
+
+
+
 ##### 25. 解压 Hadoop 压缩包 并更改 Hadoop 文件夹的用户所有权
 ##### 26. 修改 Hadoop 配置文件 core-site.xml 和 hdfs-site.xml
 
