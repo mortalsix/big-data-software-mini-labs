@@ -112,7 +112,7 @@ java -version
 ##### 25. 解压 Hadoop 压缩包 并更改 Hadoop 文件夹的用户所有权
 
 ```shell
-sudo tar -zxvf hadoop-3.3.5.tar.gz -C /usr/local
+sudo tar -zxvf ~/hadoop-3.3.5.tar.gz -C /usr/local
 sudo mv /usr/local/hadoop-3.3.5 /usr/local/hadoop
 ```
 以下代码中的 `you` 要替换成自己的用户名
