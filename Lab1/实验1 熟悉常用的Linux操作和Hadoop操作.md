@@ -167,6 +167,7 @@ sudo chown -R you:you /usr/local/hadoop
 
 
 ##### 26. 修改 Hadoop 配置文件 `core-site.xml` 和 `hdfs-site.xml`
+这两个配置文件都在 /usr/local/hadoop/etc/hadoop 文件夹下，可以在 MobaXterm 左侧的文件路径输入，就可以看到它们。
 
 (1) 将 `core-site.xml` 文件的配置项修改如下：
 
