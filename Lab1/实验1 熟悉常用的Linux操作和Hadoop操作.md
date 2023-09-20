@@ -17,10 +17,10 @@
 ##### 1. 安装并启动 VirtualBox 软件
 ##### 2. 在 VirtualBox 中安装 Ubuntu 系统
 
-![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC01%E6%AD%A5.png)
-![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC02%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC03%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC04%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC05%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC06%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC07%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC08%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC09%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC10%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC11%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC12%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC13%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC14%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC15%E6%AD%A5.png)
-![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC16%E6%AD%A5.png) ![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC17%E6%AD%A5.png)
-![Alt text](%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC18%E6%AD%A5.png)
+![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC01%E6%AD%A5.png)
+![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC02%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC03%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC04%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC05%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC06%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC07%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC08%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC09%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC10%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC11%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC12%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC13%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC14%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC15%E6%AD%A5.png)
+![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC16%E6%AD%A5.png) ![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC17%E6%AD%A5.png)
+![Alt text](img/%E5%AE%89%E8%A3%85Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC18%E6%AD%A5.png)
 
 ##### 3. 更新 apt 并安装 openssh-server
 登录系统后，更新包管理器 apt，打开终端，在其中敲下如下命令：
@@ -28,7 +28,7 @@
 sudo apt update
 ```
 更新成功如下图所示：
-![Alt text](%E6%9B%B4%E6%96%B0apt.png)
+![Alt text](img/%E6%9B%B4%E6%96%B0apt.png)
 
 然后执行以下命令安装 openssh-server：
 ```bash
@@ -39,16 +39,16 @@ sudo apt install -y openssh-server
 
 先设置虚拟机网络端口转发，操作步骤如下：
 
-![Alt text](VirtualBox%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E7%AC%AC1%E6%AD%A5.png) 
-![Alt text](VirtualBox%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E7%AC%AC2%E6%AD%A5.png)
+![Alt text](img/VirtualBox%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E7%AC%AC1%E6%AD%A5.png) 
+![Alt text](img/VirtualBox%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E7%AC%AC2%E6%AD%A5.png)
 
 然后使用 MobaXterm 连接 Ubuntu，操作步骤如下：
 
-![Alt text](MobaXterm%E8%BF%9E%E6%8E%A5Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA.png)
+![Alt text](img/MobaXterm%E8%BF%9E%E6%8E%A5Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA.png)
 
 提示你输入密码，说明连接成功，输入你的密码，即可实现登录，登录成功后的界面大概是这样：
 
-![Alt text](MobaXterm%E8%BF%9E%E6%8E%A5Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA-%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F.png)
+![Alt text](img/MobaXterm%E8%BF%9E%E6%8E%A5Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA-%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F.png)
 
 ### 二、熟悉常用的Linux命令
 ##### 5. `cd` 切换目录
@@ -129,7 +129,7 @@ sudo tar -zxf ~/jdk-8u162-linux-x64.tar.gz -C /usr/lib/jvm
 
 使用 MobaXterm 自带的编辑器打开环境变量文件：
 
-![Alt text](%E4%BD%BF%E7%94%A8MobaXterm%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%96%87%E4%BB%B6.png)
+![Alt text](img/%E4%BD%BF%E7%94%A8MobaXterm%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%96%87%E4%BB%B6.png)
 
 在 .bashrc 文件的开头位置添加以下两行内容：
 
@@ -140,11 +140,11 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 修改后的 .bashrc 文件大概是这样：
 
-![Alt text](%E4%BD%BF%E7%94%A8MobaXterm%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%96%87%E4%BB%B6-2.png)
+![Alt text](img/%E4%BD%BF%E7%94%A8MobaXterm%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%96%87%E4%BB%B6-2.png)
 
 然后，点击保存按钮，并在弹出的对话框中点击“yes”，完成 Ubuntu 环境变量文件的修改。
 
-![Alt text](%E4%BD%BF%E7%94%A8MobaXterm%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%96%87%E4%BB%B6-3.png)
+![Alt text](img/%E4%BD%BF%E7%94%A8MobaXterm%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%96%87%E4%BB%B6-3.png)
 
 (3）让环境变量生效，并检查是否生效
 ```bash
