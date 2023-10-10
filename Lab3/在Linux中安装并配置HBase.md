@@ -52,3 +52,11 @@ bin/start-hbase.sh
 jps
 ```
 如果发现有 `HMaster` 说明启动成功。
+
+
+### 10. 打开 HBase Shell 进行操作
+```bash
+cd /usr/local/hbase
+bin/hbase shell
+```
+![Alt text](img/%E6%89%93%E5%BC%80HBaseShell.png)
