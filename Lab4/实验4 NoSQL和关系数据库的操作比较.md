@@ -136,17 +136,52 @@ lisi: {
 }
 ```
 
+
 ##### 13. 创建 Redis 键值结构
 用 Redis 的哈希结构设计出 Student 表（键值可以用 student.zhangsan 和 student.lisi 来表示两个键值属于同一个表）。
+
+参考命令 (Redis Shell 命令)
+```bash
+hset student.zhangsan English 69
+hset student.zhangsan Math 86
+hset student.zhangsan Computer 77
+hset student.lisi English 55
+hset student.lisi Math 100
+hset student.lisi Computer 88
+
+```
 
 ##### 14. 输出 Redis 键值数据
 用 hgetall 命令分别输出 zhangsan 和 lisi 的成绩信息。
 
+参考命令 (Redis Shell 命令)
+```bash
+hgetall student.zhangsan
+
+```
+
+```bash
+hgetall student.lisi
+
+```
+
 ##### 15. 查询 Redis 键值数据
 用 hget 命令查询 zhangsan 的 Computer 成绩。
 
+参考命令 (Redis Shell 命令)
+```bash
+hget student.zhangsan Computer
+
+```
+
 ##### 16. 修改 Redis 键值数据
 修改 lisi 的 Math 成绩为 95。
+
+参考命令 (Redis Shell 命令)
+```bash
+hset student.lisi Math 95
+
+```
 
 ##### 17. 使用 Java 编程向 Redis 添加数据
 向 Student 表中添加如下所示的一条记录。该数据对应的键值对形式如下：
@@ -159,8 +194,53 @@ scofield: {
 }
 ```
 
+参考java代码：
+```java
+import java.util.Map;
+import redis.clients.jedis.Jedis;
+ 
+public class jedis_test {
+ 
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Jedis jedis = new Jedis("localhost");
+        jedis.hset("student.scofield", "English","45");
+        jedis.hset("student.scofield", "Math","89");
+        jedis.hset("student.scofield", "Computer","100");
+        Map<String,String>  value = jedis.hgetAll("student.scofield");
+        for(Map.Entry<String, String> entry:value.entrySet())
+        {
+            System.out.println(entry.getKey()+":"+entry.getValue());
+        }
+    }
+}
+```
+
 ##### 18. 使用 Java 编程查询 Redis 键值数据
 获取 scofield 的 English 成绩信息。
+
+参考java代码：
+```java
+import java.util.Map;
+import redis.clients.jedis.Jedis;
+ 
+public class jedis_query {
+ 
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Jedis jedis = new Jedis("localhost");
+        String value=jedis.hget("student.scofield", "English");
+        System.out.println("scofield's English score is:    "+value);
+    }
+}
+```
+
 
 ### 四、MongoDB 数据库操作
 
@@ -187,14 +267,50 @@ scofield: {
 ##### 19. 创建 MongoDB 集合
 用 MongoDB Shell 设计出 Student 集合。
 
+参考命令 (Mongo Shell 命令)
+```bash
+use student
+
+```
+
+```bash
+var stus=[ 
+    {"name":"zhangsan","score":{"English":69,"Math":86,"Computer":77}}, 
+    {"name":"lisi","score":{"English":55,"Math":100,"Computer":88}} ]
+
+```
+
+```bash
+db.student.insert(stus)
+
+```
+
 ##### 20. 输出 MongoDB 集合数据
 用 find() 方法输出两个学生的信息。
+
+参考命令 (Mongo Shell 命令)
+```bash
+db.student.find().pretty()
+
+```
 
 ##### 21. 查询 MongoDB 文档数据
 用 find() 方法查询 zhangsan 的所有成绩（只显示 score 列）。
 
+参考命令 (Mongo Shell 命令)
+```bash
+db.student.find({"name":"zhangsan"},{"_id":0,"name":0})
+
+```
+
 ##### 22. 修改 MongoDB 文档数据
 修改 lisi 的 Math 成绩为 95。
+
+参考命令 (Mongo Shell 命令)
+```bash
+db.student.update({"name":"lisi"}, {"$set":{"score.Math":95}} )
+
+```
 
 ##### 23. 使用 Java 编程向 MongoDB 添加记录
 向 Student 表中添加如下所示的一条记录。该数据对应的文档形式如下：
@@ -210,5 +326,78 @@ scofield: {
 }
 ```
 
+参考java代码：
+```java
+import java.util.ArrayList;
+import java.util.List;
+ 
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+ 
+public class mongo_insert {
+ 
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        //实例化一个mongo客户端
+        MongoClient  mongoClient=new MongoClient("localhost",27017);
+        //实例化一个mongo数据库
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("student");
+        //获取数据库中某个集合
+        MongoCollection<Document> collection = mongoDatabase.getCollection("student");
+        //实例化一个文档,内嵌一个子文档
+        Document document=new Document("name","scofield").
+                append("score", new Document("English",45).
+                        append("Math", 89).
+                        append("Computer", 100));
+        List<Document> documents = new ArrayList<Document>();  
+        documents.add(document);  
+        //将文档插入集合中
+        collection.insertMany(documents);  
+        System.out.println("文档插入成功"); 
+    }
+}
+```
+
+
+
 ##### 24. 使用 Java 编程查询 MongoDB 文档数据
 获取 scofield 的 English 成绩信息（只显示 score 列）。
+
+参考java代码：
+```java
+import java.util.ArrayList;
+import java.util.List;
+ 
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Filters.eq;
+public class mongo_query {
+ 
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        //实例化一个mongo客户端
+        MongoClient  mongoClient=new MongoClient("localhost",27017);
+        //实例化一个mongo数据库
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("student");
+        //获取数据库中某个集合
+        MongoCollection<Document> collection = mongoDatabase.getCollection("student");
+        //进行数据查找,查询条件为name=scofield, 对获取的结果集只显示score这个域
+        MongoCursor<Document>  cursor=collection.find( new Document("name","scofield")).
+                projection(new Document("score",1).append("_id", 0)).iterator();
+        while(cursor.hasNext())
+            System.out.println(cursor.next().toJson());
+    }
+}
+```
