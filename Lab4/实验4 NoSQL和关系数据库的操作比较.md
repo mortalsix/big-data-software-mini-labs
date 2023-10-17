@@ -7,7 +7,7 @@
 - 操作系统：Ubuntu 22.04
 - JDK 版本：JDK 1.8.0_162
 - Hadoop 版本：3.3.5
-- MySQL 版本：8.0
+- MySQL 版本：5.7
 - Redis 版本：7.2
 - MongoDB 版本：7.0
 - Java IDE：Visual Studio Code
@@ -25,14 +25,51 @@
 ##### 1. 创建 MySQL 表
 根据表 1 ，在 MySQL 中创建 Student 表，并录入数据。
 
+参考命令 (MySQL Shell 命令)
+```bash
+use test;
+create table Student(
+    Name varchar(30) not null,
+    English tinyint unsigned not null,
+    Math tinyint unsigned not null,
+    Computer tinyint unsigned not null
+);
+
+```
+
+```bash
+insert into Student values("zhangsan",69,86,77);
+insert into Student values("lisi",55,100,88);
+
+```
+
 ##### 2. 输出 MySQL 表全部数据
 用 SQL 语句输出 Student 表中的所有记录。
+
+参考命令 (MySQL Shell 命令)
+```bash
+select * from Student;
+
+```
 
 ##### 3. 查询 MySQL 表数据
 查询 zhangsan 的 Computer 成绩。
 
+参考命令 (MySQL Shell 命令)
+```bash
+select Name , Computer from Student where Name = "zhangsan";
+
+```
+
+
 ##### 4. 修改 MySQL 表数据
 修改 lisi 的 Math 成绩为 95。
+
+参考命令 (MySQL Shell 命令)
+```bash
+update Student set Math=95 where Name="lisi";
+
+```
 
 ##### 5. 使用 Java 编程向 MySQL 表添加数据
 向 Student 表 添加如下所示的一条数据：
@@ -41,8 +78,14 @@
 | ---- | ---- | ---- | ---- |
 | scofield | 45 | 89 | 100 |
 
+
+
+
 ##### 6. 使用 Java 编程查询 MySQL 表数据
 从 Student 表获取 wangwu 的 English 成绩。
+
+
+
 
 ### 二、HBase 数据库操作
 
@@ -55,6 +98,8 @@
 
 ##### 7. 创建 HBase 表
 根据表 2 ，用 HBase Shell 命令创建学生（Student）表。
+
+
 
 ##### 8. 输出 HBase 表元数据
 用 scan 命令浏览 Student 表的相关信息。
