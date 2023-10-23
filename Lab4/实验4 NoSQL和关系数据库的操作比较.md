@@ -311,9 +311,7 @@ use student
 ```
 
 ```bash
-var stus=[ 
-    {"name":"zhangsan","score":{"English":69,"Math":86,"Computer":77}}, 
-    {"name":"lisi","score":{"English":55,"Math":100,"Computer":88}} ]
+var stus=[{"name":"zhangsan","score":{"English":69,"Math":86,"Computer":77}}, {"name":"lisi","score":{"English":55,"Math":100,"Computer":88}}]
 
 ```
 

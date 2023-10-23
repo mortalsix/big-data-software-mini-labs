@@ -1,6 +1,5 @@
 ### 1. 执行以下 Shell 命令：
 ```bash
-sudo apt update
 sudo apt install -y mysql-server
 
 ```
