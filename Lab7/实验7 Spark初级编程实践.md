@@ -17,13 +17,31 @@
 
 在 spark-shell 中读取本地文件 /tmp/test.txt 并统计出文件的行数
 
+参考代码（spark-shell）：
+```scala
+val textFile=sc.textFile("file:///tmp/test.txt")
+textFile.count()
+```
+
 ### 3. 使用 Spark Shell 读取 HDFS 文件
 
 在 Spark-shell 中读取 HDFS 文件 /test/test.txt 并统计出文件的行数
 
+参考代码（spark-shell）：
+```scala
+val textFile=sc.textFile("hdfs://localhost:9000/test/test.txt")
+textFile.count()
+```
+
 ### 4. 使用 Spark 编程读取 HDFS 文件
 
-编写独立应用程序，读取 HDFS 文件 /user/hadoop/test.txt ，然后统计出文件的行数；通过 sbt 将整个应用程序编译打包成 JAR 包，并将生成的 JAR 包通过 spark-submit 提交到 Spark 中运行。
+编写独立应用程序，读取 HDFS 文件 /test/test.txt ，然后统计出文件的行数；通过 sbt 将整个应用程序编译打包成 JAR 包，并将生成的 JAR 包通过 spark-submit 提交到 Spark 中运行。
+
+参考代码（spark-shell）：
+```scala
+val textFile=sc.textFile("hdfs://localhost:9000/test/test.txt")
+textFile.count()
+```
 
 ### 5. 编写 Spark 独立应用程序实现数据去重
 
