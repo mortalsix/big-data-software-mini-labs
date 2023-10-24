@@ -47,7 +47,7 @@ public class Lab5P01 {
             System.exit(2);
             }
         Job job = Job.getInstance(conf,"Merge and duplicate removal");
-        job.setJarByClass(Merge.class);
+        job.setJarByClass(Lab5P01.class);
         job.setMapperClass(Map.class);
         job.setCombinerClass(Reduce.class);
         job.setReducerClass(Reduce.class);

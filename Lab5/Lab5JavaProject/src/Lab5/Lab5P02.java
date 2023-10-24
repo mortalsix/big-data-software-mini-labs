@@ -70,7 +70,7 @@ public class Lab5P02 {
             System.exit(2);
         }
         Job job = Job.getInstance(conf,"Merge and sort");
-        job.setJarByClass(MergeSort.class);
+        job.setJarByClass(Lab5P02.class);
         job.setMapperClass(Map.class);
         job.setReducerClass(Reduce.class);
         job.setPartitionerClass(Partition.class);

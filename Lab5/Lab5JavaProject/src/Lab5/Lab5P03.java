@@ -108,7 +108,7 @@ public class Lab5P03 {
             System.exit(2);
             }
         Job job = Job.getInstance(conf,"Single table join");
-        job.setJarByClass(simple_data_mining.class);
+        job.setJarByClass(Lab5P03.class);
         job.setMapperClass(Map.class);
         job.setReducerClass(Reduce.class);
         job.setOutputKeyClass(Text.class);
