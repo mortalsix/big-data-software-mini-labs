@@ -3,6 +3,8 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
+        "/usr/local/hadoop/share/hadoop/mapreduce/*.jar",
+        "/usr/local/hadoop/share/hadoop/yarn/*.jar",
         "/usr/local/hadoop/share/hadoop/common/*.jar",
         "/usr/local/hadoop/share/hadoop/common/lib/*.jar",
         "/usr/local/hadoop/share/hadoop/hdfs/*.jar",
