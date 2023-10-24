@@ -2,6 +2,10 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "/usr/local/hadoop/share/hadoop/common/hadoop-common-3.3.5.jar",
+        "/usr/local/hadoop/share/hadoop/common/haoop-nfs-3.3.5.jar",
+        "/usr/local/hadoop/share/hadoop/common/lib/*.jar",
+        "/usr/local/hadoop/share/hadoop/mapreduce/*.jar"
     ]
 }
