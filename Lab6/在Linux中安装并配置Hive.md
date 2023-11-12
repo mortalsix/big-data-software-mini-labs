@@ -1,62 +1,51 @@
-### 1. 通过MobaXterm将HBase软件压缩包传输到Ubuntu用户主目录下：
-![Alt text](img/%E4%B8%8A%E4%BC%A0HBase%E5%88%B0Ubuntu%E7%94%A8%E6%88%B7%E4%B8%BB%E7%9B%AE%E5%BD%95.png)
+### 1. 通过MobaXterm将Hive软件压缩包传输到Ubuntu用户主目录下：
 
-### 2. 解压HBase，在终端输入命令：
+### 2. 解压Hive，在终端输入命令：
 ```bash
-sudo tar -zxvf ~/hbase-2.5.4-bin.tar.gz -C /usr/local
+sudo tar -zxvf ~/apache-hive-3.1.3-bin.tar.gz -C /usr/local
 ```
 
 ### 3. 修改文件夹名称：
 ```bash
-sudo mv /usr/local/hbase-2.5.4/ /usr/local/hbase
+sudo mv /usr/local/apache-hive-3.1.3-bin/ /usr/local/hive
 ```
 
-### 4. 更改HBase文件夹权限（注意，修改以下命令中的user为自己Ubuntu的用户名）
+### 4. 更改Hive文件夹权限（注意，修改以下命令中的user为自己Ubuntu的用户名）
 ```bash
-sudo chown -R user:user /usr/local/hbase
+sudo chown -R user:user /usr/local/hive
 ```
 
-### 5. 在MobaXterm左侧进入HBase配置文件夹/usr/local/hbase/conf
-![Alt text](img/%E5%9C%A8MobaXterm%E4%B8%AD%E8%BF%9B%E5%85%A5HBase%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9.png)
+### 5. 使用MobaXterm修改环境变量文件 ~/.bashrc
 
-### 6. 使用MobaXterm修改文件hbase-env.sh
-![Alt text](img/%E9%85%8D%E7%BD%AEhbase-env.sh%E6%96%87%E4%BB%B6.png)
-
-添加的内容为：
+在其最开头部分增加以下三行内容：
 ```bash
-export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_162
-export HBASE_MANAGES_ZK=true 
+export HIVE_HOME=/usr/local/hive
+export PATH=$PATH:$HIVE_HOME/bin
+export HADOOP_HOME=/usr/local/hadoop
 ```
-记得保存。
 
-### 7. 使用MobaXterm修改文件hbase-site.xml
-![Alt text](img/%E9%85%8D%E7%BD%AEhbase-site.xml%E6%96%87%E4%BB%B6.png)
+### 6. 使新的环境变量文件生效：
 
-添加的内容为：
-```xml
-  <property>
-    <name>hbase.rootdir</name>
-    <value>file:///usr/local/hbase/hbase-tmp</value>
-  </property>
-```
-记得保存。
-
-### 8. 启动HBase
 ```bash
-cd /usr/local/hbase
-bin/start-hbase.sh
+source ~/.bashrc
 ```
 
-### 9. 查看是否启动成功
+### 7. 启动 HDFS：
+
 ```bash
-jps
+/usr/local/hadoop/sbin/start-dfs.sh
 ```
-如果发现有 `HMaster` 说明启动成功。
 
+### 8. 启动 Hive:
 
-### 10. 打开 HBase Shell 进行操作
 ```bash
-cd /usr/local/hbase
-bin/hbase shell
+cd /usr/local/hive
+bin/hive
 ```
-![Alt text](img/%E6%89%93%E5%BC%80HBaseShell.png)
+
+### 错误处理：如果遇到“Hive metastore database is not initialized”的错误，执行以下命令后再启动hive
+
+```bash
+cd /usr/local/hive
+./bin/schematool -dbType derby -initSchema
+```
