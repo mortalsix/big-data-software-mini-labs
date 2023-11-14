@@ -10,7 +10,20 @@
 
 # 实验内容和要求
 ### 0. 准备数据
-将 `prog-hive-1st-ed-data.zip` 
+使用 MobaXterm 将 `prog-hive-1st-ed-data.zip` 上传至 `/tmp` 目录下
+
+安装 unzip ：
+
+```bash
+sudo apt install unzip
+```
+
+解压数据：
+
+```bash
+cd /tmp
+unzip prog-hive-1st-ed-data.zip
+```
 
 
 ### 1. 创建内部表
@@ -104,7 +117,7 @@ create external table if not exists dividends_unpartitioned
     `dividend` float
 )
 row format delimited fields terminated by ',';
-load data local inpath '/home/hadoop/data/dividends/dividends.csv' overwrite into table dividends_unpartitioned;
+load data local inpath '/tmp/data/dividends/dividends.csv' overwrite into table dividends_unpartitioned;
 ```
 
 ### 5. 利用 Hive 自动分区特性向分区表插入数据
