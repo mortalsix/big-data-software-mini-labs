@@ -36,16 +36,16 @@ source ~/.bashrc
 /usr/local/hadoop/sbin/start-dfs.sh
 ```
 
-### 8. 启动 Hive:
+### 8. 初始化 Hive 元数据库:
+
+```bash
+cd /usr/local/hive
+bin/schematool -dbType derby -initSchema
+```
+
+### 9. 启动 Hive:
 
 ```bash
 cd /usr/local/hive
 bin/hive
-```
-
-### 错误处理：如果遇到“Hive metastore database is not initialized”的错误，执行以下命令后再启动hive
-
-```bash
-cd /usr/local/hive
-./bin/schematool -dbType derby -initSchema
 ```
