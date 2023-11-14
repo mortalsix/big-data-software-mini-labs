@@ -9,6 +9,10 @@
 - Hive 版本：3.1.3
 
 # 实验内容和要求
+### 0. 准备数据
+将 `prog-hive-1st-ed-data.zip` 
+
+
 ### 1. 创建内部表
 创建一个内部表 stocks ，字段分隔符为英文逗号，表结构如表 1 所示：
 
@@ -74,7 +78,7 @@ row format delimited fields terminated by ',';
 
 参考代码（Hive QL）：
 ```sql
-load data local inpath '/home/hadoop/data/stocks/stocks.csv' overwrite into table stocks;
+load data local inpath '/tmp/data/stocks/stocks.csv' overwrite into table stocks;
 ```
 
 ### 4. 创建未分区外部表并导入数据
