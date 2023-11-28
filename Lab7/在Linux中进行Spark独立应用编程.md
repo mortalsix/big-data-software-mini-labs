@@ -1,7 +1,6 @@
 # 1. 安装并配置sbt
 
-参考 %E5%9C%A8Linux%E4%B8%AD%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AEsbt.md
-
+参考另一文档： [在Linux中安装并配置sbt](./在Linux中安装并配置sbt.md)
 
 # 2. 创建scala应用程序代码目录
 
