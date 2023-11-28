@@ -312,7 +312,7 @@ object AvgScore {
        val format = f"$avg%1.2f".toDouble
        (x._1,format)
      })
-       res.saveAsTextFile("result")
+       res.saveAsTextFile("file:///home/fzw/result/avgscore")
     }
 }
 ```
