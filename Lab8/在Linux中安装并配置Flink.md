@@ -1,23 +1,21 @@
-### 1. 通过MobaXterm将HBase软件压缩包传输到Ubuntu用户主目录下：
-![Alt text](img/%E4%B8%8A%E4%BC%A0HBase%E5%88%B0Ubuntu%E7%94%A8%E6%88%B7%E4%B8%BB%E7%9B%AE%E5%BD%95.png)
+### 1. 通过MobaXterm将Flink软件压缩包传输到Ubuntu用户主目录下
 
-### 2. 解压HBase，在终端输入命令：
+### 2. 解压Flink，在终端输入命令：
 ```bash
-sudo tar -zxvf ~/hbase-2.5.4-bin.tar.gz -C /usr/local
+sudo tar -zxvf flink-1.16.2-bin-scala_2.12.tgz -C /usr/local
 ```
 
 ### 3. 修改文件夹名称：
 ```bash
-sudo mv /usr/local/hbase-2.5.4/ /usr/local/hbase
+sudo mv /usr/local/flink-1.16.2/ /usr/local/flink
 ```
 
-### 4. 更改HBase文件夹权限（注意，修改以下命令中的user为自己Ubuntu的用户名）
+### 4. 更改Flink文件夹权限（注意，修改以下命令中的user为自己Ubuntu的用户名）
 ```bash
-sudo chown -R user:user /usr/local/hbase
+sudo chown -R user:user /usr/local/flink
 ```
 
 ### 5. 在MobaXterm左侧进入HBase配置文件夹/usr/local/hbase/conf
-![Alt text](img/%E5%9C%A8MobaXterm%E4%B8%AD%E8%BF%9B%E5%85%A5HBase%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9.png)
 
 ### 6. 使用MobaXterm修改文件hbase-env.sh
 ![Alt text](img/%E9%85%8D%E7%BD%AEhbase-env.sh%E6%96%87%E4%BB%B6.png)
