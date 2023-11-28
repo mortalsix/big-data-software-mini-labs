@@ -160,8 +160,18 @@ find .
 20210506 x
 ```
 
-参考 scala 程序代码：
+参考过程：
 
+(1) 创建 scala 应用程序目录和程序文件
+```bash
+mkdir -p ~/sparkapps/remdup
+mkdir -p ~/sparkapps/remdup/src/main/scala
+touch ~/sparkapps/remdup/src/main/scala/SparkRemoveDup.scala
+``` 
+
+(2) 编写 scala 程序：
+
+参考 scala 程序代码：
 ```scala
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
@@ -172,13 +182,59 @@ object RemDup {
     def main(args: Array[String]) {
         val conf = new SparkConf().setAppName("RemDup")
         val sc = new SparkContext(conf)
-        val dataFile = "file:///home/fzw/data"
+        val dataFile = "file:///home/fzw/data/remdup"
         val data = sc.textFile(dataFile,2)
         val res = data.filter(_.trim().length>0).map(line=>(line.trim,"")).partitionBy(new HashPartitioner(1)).groupByKey().sortByKey().keys
-        res.saveAsTextFile("result")
+        res.saveAsTextFile("file:///home/fzw/result/remdup")
     }
 }
 ```
+
+(3) 创建sbt文件
+```bash
+cd ~/sparkapps/remdup  # 进入remdup项目目录
+touch simple.sbt # 创建 sbt 文件
+```
+
+向 `simple.sbt` 文件添加如下内容：
+```
+name := "Simple Project"
+version := "1.0"
+scalaVersion := "2.12.17"
+libraryDependencies += "org.apache.spark" %% "spark-core" % "3.4.0"
+```
+
+为保证sbt能正常运行，先使用命令检查应用程序的目录结构：
+
+```bash
+cd ~/sparkapps/remdup
+find .
+```
+
+如果文件结构和下图类似（注意，程序文件名可能会不同）：
+
+![Alt text](imgs/spark%E5%BA%94%E7%94%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png)
+
+(4) 使用sbt程序执行编译打包：
+
+```bash
+/usr/local/sbt/sbt package
+```
+
+生成的 jar 包位置在 `~/sparkapps/remdup/target/scala-2.12/simple-project_2.12-1.0.jar`
+
+(5) 使用 spark-submit 运行程序
+
+注意：在提交之前一定要确保输入路径 `/home/fzw/data`（注意，此文件夹根据自己实际目录情况做调整） 中有待处理的文件！！！！ 
+
+命令如下：
+
+```bash
+/usr/local/spark/bin/spark-submit --class "RemDup" ~/sparkapps/remdup/target/scala-2.12/simple-project_2.12-1.0.jar
+```
+
+最后查看输出路径 `/home/fzw/result/remdup`（注意，此文件夹根据自己实际目录情况做调整） 中是否有结果文件
+
 
 ### 6. 编写 Spark 独立应用程序实现求平均值
 
@@ -220,8 +276,18 @@ Python 成绩：
 小丽 88.67
 ```
 
-参考 scala 程序代码：
+参考过程：
 
+(1) 创建 scala 应用程序目录和程序文件
+```bash
+mkdir -p ~/sparkapps/avgscore
+mkdir -p ~/sparkapps/avgscore/src/main/scala
+touch ~/sparkapps/avgscore/src/main/scala/SparkAvgScore.scala
+``` 
+
+(2) 编写 scala 程序：
+
+参考 scala 程序代码：
 ```scala
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
@@ -232,8 +298,8 @@ object AvgScore {
     def main(args: Array[String]) {
         val conf = new SparkConf().setAppName("AvgScore")
         val sc = new SparkContext(conf)
-        val dataFile = "file:///home/hadoop/data"
-        val data = sc.textFile(dataFile,3)
+        val dataFile = "file:///home/fzw/data/avgscore"
+        val data = sc.textFile(dataFile, 3)
  
        val res = data.filter(_.trim().length>0).map(line=>(line.split(" ")(0).trim(),line.split(" ")(1).trim().toInt)).partitionBy(new HashPartitioner(1)).groupByKey().map(x => {
        var n = 0
@@ -250,3 +316,48 @@ object AvgScore {
     }
 }
 ```
+
+(3) 创建sbt文件
+```bash
+cd ~/sparkapps/avgscore  # 进入avgscore项目目录
+touch simple.sbt # 创建 sbt 文件
+```
+
+向 `simple.sbt` 文件添加如下内容：
+```
+name := "Simple Project"
+version := "1.0"
+scalaVersion := "2.12.17"
+libraryDependencies += "org.apache.spark" %% "spark-core" % "3.4.0"
+```
+
+为保证sbt能正常运行，先使用命令检查应用程序的目录结构：
+
+```bash
+cd ~/sparkapps/avgscore
+find .
+```
+
+如果文件结构和下图类似（注意，程序文件名可能会不同）：
+
+![Alt text](imgs/spark%E5%BA%94%E7%94%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png)
+
+(4) 使用sbt程序执行编译打包：
+
+```bash
+/usr/local/sbt/sbt package
+```
+
+生成的 jar 包位置在 `~/sparkapps/avgscore/target/scala-2.12/simple-project_2.12-1.0.jar`
+
+(5) 使用 spark-submit 运行程序
+
+注意：在提交之前一定要确保输入路径 `/home/fzw/data/avgscore`（注意，此文件夹根据自己实际目录情况做调整） 中有待处理的文件！！！！ 
+
+命令如下：
+
+```bash
+/usr/local/spark/bin/spark-submit --class "AvgScore" ~/sparkapps/avgscore/target/scala-2.12/simple-project_2.12-1.0.jar
+```
+
+最后查看输出路径 `/home/fzw/result/avgscore`（注意，此文件夹根据自己实际目录情况做调整） 中是否有结果文件
