@@ -15,6 +15,12 @@
 
 ### 2. 使用 Spark Shell 读取本地文件
 
+启动 spark-shell：
+```bash
+cd /usr/local/spark
+./bin/spark-shell
+```
+
 在 spark-shell 中读取本地文件 /tmp/test.txt 并统计出文件的行数
 
 参考代码（spark-shell）：
@@ -37,11 +43,83 @@ textFile.count()
 
 编写独立应用程序，读取 HDFS 文件 /test/test.txt ，然后统计出文件的行数；通过 sbt 将整个应用程序编译打包成 JAR 包，并将生成的 JAR 包通过 spark-submit 提交到 Spark 中运行。
 
-参考代码（spark-shell）：
+参考过程：
+
+(1) 创建 scala 应用程序目录和程序文件
+```bash
+mkdir -p ~/sparkapps/readhdfsfile
+mkdir -p ~/sparkapps/readhdfsfile/src/main/scala
+touch ~/sparkapps/readhdfsfile/src/main/scala/SparkReadHdfsFile.scala
+``` 
+
+(2) 编写 scala 程序：
+
+参考 scala 程序代码：
 ```scala
-val textFile=sc.textFile("hdfs://localhost:9000/test/test.txt")
-textFile.count()
+/* SparkReadHdfsFile.scala */
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkContext._
+import org.apache.spark.SparkConf
+ 
+object ReadHdfsFileApp {
+    def main(args: Array[String]) {
+        val hdfsFile = "hdfs://localhost:9000/test.txt"
+        val conf = new SparkConf().setAppName("Read HDFS File Test")
+        val sc = new SparkContext(conf)
+        val fileData = sc.textFile(hdfsFile, 2)
+        val num = fileData.count()
+        printf("The num of this file is %d", num)
+    }
+}
 ```
+
+(3) 创建sbt文件
+```bash
+cd ~/sparkapps/readhdfsfile  # 进入readhdfsfile项目目录
+touch simple.sbt # 创建 sbt 文件
+```
+
+向 `simple.sbt` 文件添加如下内容：
+```
+name := "Simple Project"
+version := "1.0"
+scalaVersion := "2.12.17"
+libraryDependencies += "org.apache.spark" %% "spark-core" % "3.4.0"
+```
+
+为保证sbt能正常运行，先使用命令检查应用程序的目录结构：
+
+```bash
+cd ~/sparkapps/readhdfsfile
+find .
+```
+
+如果文件结构和下图类似（注意，程序文件名可能会不同）：
+
+![Alt text](imgs/spark%E5%BA%94%E7%94%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png)
+
+(4) 使用sbt程序执行编译打包：
+
+```bash
+/usr/local/sbt/sbt package
+```
+
+生成的 jar 包位置在 `~/sparkapps/readhdfsfile/target/scala-2.12/simple-project_2.12-1.0.jar`
+
+(5) 使用 spark-submit 运行程序
+
+注意：在提交之前一定要确保 hdfs 服务已经启动，且 hdfs 中有文本文件 `/test.txt` 
+
+命令如下：
+
+```bash
+/usr/local/spark/bin/spark-submit --class "ReadHdfsFileApp" ~/sparkapps/readhdfsfile/target/scala-2.12/simple-project_2.12-1.0.jar 2>&1 | grep "The num of this file is"
+```
+
+结果如下：
+
+![Alt text](imgs/spark%E6%B5%8B%E8%AF%95%E5%BA%94%E7%94%A8%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C1.png)
+
 
 ### 5. 编写 Spark 独立应用程序实现数据去重
 
@@ -82,6 +160,26 @@ textFile.count()
 20210506 x
 ```
 
+参考 scala 程序代码：
+
+```scala
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkContext._
+import org.apache.spark.SparkConf
+import org.apache.spark.HashPartitioner
+ 
+object RemDup {
+    def main(args: Array[String]) {
+        val conf = new SparkConf().setAppName("RemDup")
+        val sc = new SparkContext(conf)
+        val dataFile = "file:///home/fzw/data"
+        val data = sc.textFile(dataFile,2)
+        val res = data.filter(_.trim().length>0).map(line=>(line.trim,"")).partitionBy(new HashPartitioner(1)).groupByKey().sortByKey().keys
+        res.saveAsTextFile("result")
+    }
+}
+```
+
 ### 6. 编写 Spark 独立应用程序实现求平均值
 
 每个输入文件表示班级学生某个学科的成绩，每行内容由两个字段组成，第一个是学生名字，第二个是学生的成绩；编写 Spark 独立应用程序求出所有学生的平均成绩，并输出到一个新文件中。下面是输入文件和输出文件的一个样例，可供参考。
@@ -120,4 +218,35 @@ Python 成绩：
 小新 88.33
 小明 89.67
 小丽 88.67
+```
+
+参考 scala 程序代码：
+
+```scala
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkContext._
+import org.apache.spark.SparkConf
+import org.apache.spark.HashPartitioner
+ 
+object AvgScore {
+    def main(args: Array[String]) {
+        val conf = new SparkConf().setAppName("AvgScore")
+        val sc = new SparkContext(conf)
+        val dataFile = "file:///home/hadoop/data"
+        val data = sc.textFile(dataFile,3)
+ 
+       val res = data.filter(_.trim().length>0).map(line=>(line.split(" ")(0).trim(),line.split(" ")(1).trim().toInt)).partitionBy(new HashPartitioner(1)).groupByKey().map(x => {
+       var n = 0
+       var sum = 0.0
+       for(i <- x._2){
+        sum = sum + i
+        n = n +1
+       }
+       val avg = sum/n
+       val format = f"$avg%1.2f".toDouble
+       (x._1,format)
+     })
+       res.saveAsTextFile("result")
+    }
+}
 ```
