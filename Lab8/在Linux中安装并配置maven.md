@@ -1,3 +1,5 @@
+### 0. 下载 maven ： https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+
 ### 1. 通过MobaXterm将maven软件压缩包传输到Ubuntu用户主目录下
 
 
