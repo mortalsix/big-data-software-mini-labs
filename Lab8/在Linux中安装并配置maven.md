@@ -14,7 +14,7 @@ sudo mv /usr/local/apache-maven-3.9.6/ /usr/local/maven/
 sudo chown -R user:user /usr/local/maven
 ```
 
-### 4. 更换仓库地址，加快下载依赖包的速度，使用趁手的文本编辑器修改maven软件的settings.xml文件，将其中的全部内容删掉替换为如下内容
+### 4. 更换仓库地址，加快下载依赖包的速度，使用趁手的文本编辑器修改maven软件的settings.xml文件（`/usr/local/maven/conf/settings.xml`），将其中的全部内容删掉替换为如下内容
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
